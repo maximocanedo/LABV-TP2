@@ -1,0 +1,17 @@
+/bin
+bin/
+bin/*
+bin
+.class
+*.class
+*/*.class
+*/*/*.class
+*/*/*/*.class
+*/*/*/*/*.class
+*/*/*/*/*/*.class
+*/*/*/*/*/*/*.class
+*/*/*/*/*/*/*/*.class
+*/*/*/*/*/*/*/*/*.class
+*/*/*/*/*/*/*/*/*/*.class
+*/*/*/*/*/*/*/*/*/*/*.class
+/bin
