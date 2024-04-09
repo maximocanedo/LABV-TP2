@@ -38,6 +38,16 @@ class EmailTest {
         assertTrue(Email.validarCorreo("abcDEFG12345697"), "No valida correos con exactamente 8 caracteres");
     }
 
+    @Test
+	@DisplayName("Validar que el correo que contenga una mayuscula.")
+	public void testCorreo_MinimoUnaMayuscula_retornaTrue(){
+		assertTrue(Email.validarCorreo("Abcdef55"), "No valida correos sin una mayuscula");
+	}
 	
+	@Test
+	@DisplayName("Validar cuando el correo no contiene mayusculas")
+	public void testCorreo_MinimoUnaMayuscula_retornaFalse(){
+		assertFalse(Email.validarCorreo("abcdef55"), "No valida correos con una mayuscula");
+	}
 
 }
