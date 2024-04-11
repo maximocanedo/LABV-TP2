@@ -15,25 +15,47 @@ class EmailTest {
 	}
 	
 	@Test
-	@DisplayName("Validar correos que no tengan números. ")
+	@DisplayName("Validar correos que no tengan numeros. ")
 	public void testCorreo__AlMenosUnNumero__retornaFalse() {
 		assertFalse(Email.validarCorreo("abcDEFGh"), "No valida correos sin números");
 	}
 	
 	@Test
-    @DisplayName("Validar que el correo tenga menos de 8 caracteres")
-    public void testCorreoConMenosDeOchoCaracteres_retornaFalse() {
+    @DisplayName("Validar que el correo tenga menos de 8 numeros")
+    public void testCorreoConMenosDeOchoCaracteres_retornaTrue() {
         assertTrue(Email.validarCorreo("abcDEF16871"), "No valida correos con menos de 8 caracteres");
     }
 
     @Test
-    @DisplayName("Validar que el correo tenga mas de 8 caracteres")
-    public void testCorreoConMasDeOchoCaracteres_retornaTrue() {
+    @DisplayName("Validar que el correo tenga mas de 8 numeros")
+    public void testCorreoConMasDeOchoCaracteres_retornaFalse() {
     	assertFalse(Email.validarCorreo("abcdef2256987105"), "No valida correos con más de 8 caracteres");
     }
 
     @Test
-    @DisplayName("Validar que el correo tenga exactamente 8 caracteres")
+    @DisplayName("Validar que el correo tenga exactamente 8 numeros y ningun otro caracter")
+    public void testCorreoConOchoNumerosSinLetras_retornaFalse() {
+        assertFalse(Email.validarCorreo("87654321"), "No valida correos con exactamente 8 números sin letras");
+    }
+    
+    @Test
+    void correoSieteCaracteresCon_Mayuscula_Minuscula_Numero_CaraterAlfanumerico_retornaFalse() {
+        assertFalse(Email.validarCorreo("Patr.12"), "No valida correos con 7 caracteres y todas las condiciones");
+    }
+
+    @Test
+    void correoOchoCaracteresCon_Mayuscula_Minuscula_Numero_CaraterAlfanumerico_retornaTrue() {
+        assertTrue(Email.validarCorreo("Patr12@."), "No valida correos con 8 caracteres y todas las condiciones");
+    }
+
+    @Test
+    void correoMasDeOchoCaracteresCon_Mayuscula_Minuscula_Numero_CaraterAlfanumerico_retornaTrue() {
+        assertTrue(Email.validarCorreo("Patricio123@gmail.com"), "No valida correos con mas de 8 caracteres y todas las condiciones");
+    }
+
+
+    @Test
+    @DisplayName("Validar que el correo tenga exactamente 8 numeros")
     public void testCorreoConOchoCaracteres_retornaTrue() {
         assertTrue(Email.validarCorreo("abcDEFG12345697"), "No valida correos con exactamente 8 caracteres");
     }
