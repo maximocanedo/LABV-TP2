@@ -2,9 +2,8 @@ package frgp.utn.edu.ar.packageTest;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-import frgp.utn.edu.ar.entidad.*;
-
 import org.junit.jupiter.api.Test;
+import frgp.utn.edu.ar.entidad.Email;
 
 class EmailTest {
 
@@ -84,4 +83,27 @@ class EmailTest {
 		assertFalse(Email.validarCorreo("ABCDEF55"), "No valida correos sin todas las letras mayusculas");
 	}
 	
+    @Test
+	@DisplayName("Validar que el correo contenga minimo una minúscula.")
+	public void testCorreo_MinimoUnaMinuscula_retornaTrue(){
+		assertTrue(Email.validarCorreo("ABcDEF123"), "No valida correos con una minúscula.");
+	}
+	
+	@Test
+	@DisplayName("Validar cuando el correo no contiene minúsculas.")
+	public void testCorreo_MinimoUnaMinuscula_retornaFalse(){
+		assertFalse(Email.validarCorreo("ABCDEF123"), "No valida correos sin minúsculas.");
+	}
+	
+	@Test
+	@DisplayName("Validar que el correo que contenga mas de tres minúsculas.")
+	public void testCorreo_TresMinusculas_retornaTrue(){
+		assertTrue(Email.validarCorreo("abcDEF123"), "No valida correos con tres minúsculas.");
+	}
+    
+    @Test
+	@DisplayName("Validar cuando el correo contiene todas letras minúsculas.")
+	public void testCorreo_TodasMinusculas_retornaFalse(){
+		assertFalse(Email.validarCorreo("abcdef123"), "No valida correos con todas minúsculas.");
+	}
 }
