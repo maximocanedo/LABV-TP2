@@ -61,15 +61,27 @@ class EmailTest {
     }
 
     @Test
-	@DisplayName("Validar que el correo que contenga una mayuscula.")
+	@DisplayName("Validar que el correo contenga minimo una mayuscula.")
 	public void testCorreo_MinimoUnaMayuscula_retornaTrue(){
-		assertTrue(Email.validarCorreo("Abcdef55"), "No valida correos sin una mayuscula");
+		assertTrue(Email.validarCorreo("Abcdef55"), "No valida correos sin mayuscula");
 	}
 	
 	@Test
 	@DisplayName("Validar cuando el correo no contiene mayusculas")
 	public void testCorreo_MinimoUnaMayuscula_retornaFalse(){
-		assertFalse(Email.validarCorreo("abcdef55"), "No valida correos con una mayuscula");
+		assertFalse(Email.validarCorreo("abcdef55"), "No valida correos con mayuscula");
 	}
-
+	
+	@Test
+	@DisplayName("Validar que el correo que contenga mas de 3 mayusculas.")
+	public void testCorreo_TresMayusculas_retornaTrue(){
+		assertTrue(Email.validarCorreo("ABCDef55"), "No valida correos sin mayuscula");
+	}
+    
+    @Test
+	@DisplayName("Validar cuando el correo contiene todas mayusculas.")
+	public void testCorreo_TodasMayusculas_retornaFalse(){
+		assertFalse(Email.validarCorreo("ABCDEF55"), "No valida correos sin todas las letras mayusculas");
+	}
+	
 }
