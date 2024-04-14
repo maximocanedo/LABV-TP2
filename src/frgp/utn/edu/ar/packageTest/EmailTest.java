@@ -106,4 +106,16 @@ class EmailTest {
 	public void testCorreo_TodasMinusculas_retornaFalse(){
 		assertFalse(Email.validarCorreo("abcdef123"), "No valida correos con todas minúsculas.");
 	}
+    
+    @Test
+	@DisplayName("Validar que el correo que contenga caracteres alfanuméricos.")
+	public void testCorreo_CaracteresAlfaNumericos_retornaTrue(){
+		assertTrue(Email.validarCorreo("abcDEF123"), "No valida correos con caracteres alfanuméricos.");
+	}
+    
+    @Test
+	@DisplayName("Validar cuando el correo no contiene caracteres alfanuméricos.")
+	public void testCorreo_CaracteresAlfaNumericos_retornaFalse(){
+		assertFalse(Email.validarCorreo("#@/&!¿%!!)+$"), "Valida correos sin caracteres alfanuméricos (No debería).");
+	}
 }
